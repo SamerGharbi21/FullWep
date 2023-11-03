@@ -29,7 +29,7 @@ mysqli_close($mysqli);
 
 
 <?php foreach($users as $user): ?>
-    <h1> <?php echo htmlspecialchars ($user['fname']) . ' ' .  htmlspecialchars ($user['lname']) ?> <h1>
+    <h1> <?php echo htmlspecialchars ($user['fname']) . ' ' .  htmlspecialchars ($user['lname']) . ' ' .  htmlspecialchars ($user['email']) ?> <h1>
 <?php endforeach; ?>
 
 <script src="./js/script.js"></script>
