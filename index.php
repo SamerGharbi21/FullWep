@@ -2,7 +2,12 @@
 include './inc/conn.php';
 include './inc/form.php';
 
+$sql = 'SELECT * FROM users' ;
+$result = mysqli_query($mysqli , $sql);
+$users = mysqli_fetch_all($result , MYSQLI_ASSOC);
 
+mysqli_free_result($result);
+mysqli_close($mysqli);
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +28,9 @@ include './inc/form.php';
 </form>
 
 
+<?php foreach($users as $user): ?>
+    <h1> <?php echo htmlspecialchars ($user['fname']) . ' ' .  htmlspecialchars ($user['lname']) ?> <h1>
+<?php endforeach; ?>
 
 <script src="./js/script.js"></script>
 </body>
