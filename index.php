@@ -1,12 +1,22 @@
 <?php 
+include './inc/conn.php';
+
 
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $email = $_POST['email'];
 
 if(isset($_POST['submit'])){
-echo $fname . " ss " . $lname . " ss " . $email ;
+$sql = "INSERT INTO users(fname , lname , email)
+        VALUE ('$fname' , '$lname' , '$email')"; 
+
+if(mysqli_query($mysqli , $sql)){
+    echo 'success';
+}else {
+    echo "Error creating new record: " . mysqli_error($mysqli);
 }
+}
+
 ?>
 
 <!DOCTYPE html>
