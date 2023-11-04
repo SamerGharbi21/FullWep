@@ -4,7 +4,11 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $email = $_POST['email'];
 
-
+$errors = [
+    'FnameError' => '' ,
+    'LnameError' => '' ,
+    'EmailError' => '',
+];
 
 if(isset($_POST['submit'])){
 
@@ -17,13 +21,15 @@ $sql = "INSERT INTO users(fname , lname , email)
         VALUE ('$fname' , '$lname' , '$email')"; 
 
 if(empty($fname)){
-    echo "First name empty" ;
-}elseif(empty($lname)) {
-    echo "Last name empty" ;
-}elseif(empty($email)){
-    echo "Email empty" ;
+    $errors['FnameError'] = 'الرجاء ادخال الاسم الاول';
+}
+if(empty($lname)) {
+    $errors['LnameError'] = 'الرجاء ادخال الاسم الاخير';
+}
+if(empty($email)){
+    $errors['EmailError'] = 'الرجاء ادخال البريد الالكتروني';
 }elseif(!filter_var($email , FILTER_VALIDATE_EMAIL)){
-    echo "Email is incorrect";
+    $errors['EmailError'] = 'الرجاء التأكد من البريد الالكتروني';
 }else{
     if(mysqli_query($mysqli , $sql)){
         header ('Location: index.php');
