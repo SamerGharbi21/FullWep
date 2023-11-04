@@ -32,7 +32,7 @@ if(empty($email)){
     $errors['EmailError'] = 'الرجاء التأكد من البريد الالكتروني';
 }else{
     if(mysqli_query($mysqli , $sql)){
-        header ('Location: index.php');
+        header ('Location: ' . $_SERVER['PHP_SELF']);
     }else {
         echo "Error creating new record: " . mysqli_error($mysqli);
     }
