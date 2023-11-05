@@ -1,9 +1,9 @@
-var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+var countDownDate = new Date("Nov 5, 2023 18:56:25").getTime();
 
 var x = setInterval(function() {
 
+  var y = document.getElementById("demo");
   var now = new Date().getTime();
-
   var distance = countDownDate - now;
 
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -16,14 +16,24 @@ var x = setInterval(function() {
 
   if (distance < 0) {
     clearInterval(x);
+    btn.style.display ='block';
     document.getElementById("demo").innerHTML = "EXPIRED";
   }
 }, 1000);
 
 //winner 
-
 const win =  document.querySelector("#winner");
+const load =  document.querySelector("#load");
+const btn =  document.querySelector("#winner");
+
+var myModal = new bootstrap.Modal(document.getElementById('modal'), {keyboard: false})
 
 win.addEventListener('click' , function(){
-cards.style.display = 'flex' ;
+load.style.display ='block';
+setTimeout(function(){
+myModal.show();
+}, 5000);
+
 });
+
+
